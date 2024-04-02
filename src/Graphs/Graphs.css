@@ -1,0 +1,17 @@
+.Container-Fear , .Container-Graph {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    margin-left: 2rem;
+}
+
+.Container-Fear {
+    margin-top: 14vh;
+}
+
+.fear-text {
+    padding-right: 5rem;
+}
+

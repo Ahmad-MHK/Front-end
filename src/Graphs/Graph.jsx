@@ -1,81 +1,67 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import {
-    LineChart,
-    Line,
+    AreaChart,
+    Area,
     XAxis,
     YAxis,
     CartesianGrid,
     Tooltip,
     Legend,
     Brush,
-    AreaChart,
-    Area,
-    ResponsiveContainer,
-  } from 'recharts';
+} from 'recharts';
 
 const Graph = () => {
+    const [bitcoinData, setBitcoinData] = useState([]);
+    const [ethereumData, setEthereumData] = useState([]);
 
-    const data = [
-        {name: "Jan", value: 400, value2: 500},
-        {name: "Feb", value: 500, value2: 60},
-        {name: "Mar", value: 450, value2: 600},
-        {name: "Apr", value: 800, value2: 2000},
-        {name: "may", value: 1000, value2: 1000},
-        {name: "Jun", value: 200, value2: 2100},
-        {name: "Jul", value: 2000, value2: 1000},
-        {name: "Aug", value: 2100, value2: 2000},
-        {name: "Sep", value: 2500, value2: 5000},
-        {name: "Okt", value: 1000, value2: 6000},
-        {name: "Nov", value: 800, value2: 600},
-        {name: "Dec", value: 500, value2: 900},
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const bitcoinResponse = await axios.get('https://api.coincap.io/v2/assets/bitcoin/history?interval=d1&limit=12');
+                const ethereumResponse = await axios.get('https://api.coincap.io/v2/assets/ethereum/history?interval=d1&limit=12');
+                
+                setBitcoinData(bitcoinResponse.data.data.map(item => ({
+                    name: new Date(item.time).toLocaleDateString(),
+                    value: parseFloat(item.priceUsd).toFixed(2)
+                })));
 
-    ]
+                setEthereumData(ethereumResponse.data.data.map(item => ({
+                    name: new Date(item.time).toLocaleDateString(),
+                    value: parseFloat(item.priceUsd).toFixed(2)
+                })));
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
 
-    const CustomTooltip = ({ active, payload, label }) => {
-        if (active && payload && payload.length) {
-          return (
-            <div className="p-4 bg-slate-900 flex flex-col gap-4 rounded-md">
-              <p className="text-medium text-lg">{label}</p>
-              <p className="text-sm text-blue-400">
-                Product 1:
-                <span className="ml-2">${payload[0].value}</span>
-              </p>
-              <p className="text-sm text-indigo-400">
-                Product 2:
-                <span className="ml-2">${payload[1].value}</span>
-              </p>
-            </div>
-          );
-        }
-      };
+        fetchData();
+    }, []);
 
     return (
-        <div>
-            <h2>Socail Media User</h2>
+        <div className='Container-Graph'>
+            <h2>Social Media User</h2>
             <AreaChart
                 width={500}
                 height={200}
-                data={data}
                 syncId="anyId"
                 margin={{
-                top: 10,
-                right: 30,
-                left: 0,
-                bottom: 0
+                    top: 10,
+                    right: 30,
+                    left: 0,
+                    bottom: 0
                 }}
             >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" />
                 <YAxis />
-                <Tooltip content={<CustomTooltip />} />
+                <Tooltip />
                 <Legend />
-                <Brush />
-                <Area type="monotone" dataKey="value" stroke="#82ca9d" fill="#82ca9d" />
-                <Area type="monotone" dataKey="value2" stroke="#DCED31" fill="#EF2D56" />
+                <Area type="monotone" dataKey="value" stroke="#82ca9d" fill="#82ca9d" name="Bitcoin" data={bitcoinData} />
+                <Area type="monotone" dataKey="value" stroke="#DCED31" fill="#EF2D56" name="Ethereum" data={ethereumData} />
             </AreaChart>
         </div>
     );
 };
-
 
 export default Graph;

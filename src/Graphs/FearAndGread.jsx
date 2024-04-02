@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { PieChart, Pie, Cell, Label } from 'recharts';
+import { PieChart, Pie, Cell, Label,} from 'recharts';
 import axios from 'axios';
-// import "./Graphs.css"
+import "./Graphs.css"
 
 const RADIAN = Math.PI / 180;
 const data = [
@@ -55,9 +55,9 @@ const Example = () => {
   };
 
   return (
-    <div className='Container'>
-      <h2>Fear And Gread</h2>
-      <PieChart width={400} height={500}>
+    <div className='Container-Fear'>
+      <h2 className='fear-text'>Fear And Gread</h2>
+      <PieChart width={400} height={500} className='PieChart-Fear'>
         <Pie
           dataKey="value"
           startAngle={180}
@@ -74,9 +74,10 @@ const Example = () => {
           {data.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={entry.color} />
           ))}
-          <Label value={`Value: ${value}`} position="center" fill="#000" />
+          <Label value={`Value: ${value}`} fill="#000" />
         </Pie>
         {needle(value, data, cx, cy, iR, oR, '#d0d000')}
+        
       </PieChart>
     </div>
   );
