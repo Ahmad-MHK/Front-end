@@ -43,7 +43,7 @@ const Graph = () => {
             <h2>Social Media User</h2>
             <AreaChart
                 width={500}
-                height={200}
+                height={300}
                 syncId="anyId"
                 margin={{
                     top: 10,
@@ -59,6 +59,7 @@ const Graph = () => {
                 <Legend />
                 <Area type="monotone" dataKey="value" stroke="#82ca9d" fill="#82ca9d" name="Bitcoin" data={bitcoinData} />
                 <Area type="monotone" dataKey="value" stroke="#DCED31" fill="#EF2D56" name="Ethereum" data={ethereumData} />
+                <Brush />
             </AreaChart>
         </div>
     );

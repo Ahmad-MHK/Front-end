@@ -1,0 +1,28 @@
+.top-assets-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .asset-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .asset-item {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  
+  .rank {
+    font-weight: bold;
+  }
+  
+  .name {
+    margin-left: 20px;
+  }
+  
+  .price {
+    margin-left: 20px;
+  }
+  
