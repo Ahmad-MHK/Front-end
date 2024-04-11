@@ -9,7 +9,7 @@ import ExchangeVolumeUsd from './Graphs/ExchangeVolumeUsd.jsx';
 import CoinSupply from './Graphs/CoinSupply.jsx';
 import Footer from './Footer/Footer.jsx';
 import TopAssetsList from './RankCrypto/TopAssetsList.jsx';
-import AssetDetails from './RankCrypto/AssetDetails.jsx'; // Import AssetDetails component
+import AssetDetails from './RankCrypto/AssetDetails.jsx'; 
 
 const App = () => {
   return (
