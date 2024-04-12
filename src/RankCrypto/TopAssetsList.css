@@ -57,6 +57,7 @@
   cursor: pointer;
   margin-left: 10px;
   transition: background-color 0.3s ease;
+  color: #010101;
 }
 
 .search-button:hover , .Favoratie-button {
@@ -81,8 +82,5 @@
   margin-bottom: 5px;
 }
 
-.Favoratie-button {
-  
-}
 
 
