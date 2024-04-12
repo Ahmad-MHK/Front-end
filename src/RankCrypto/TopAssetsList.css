@@ -26,3 +26,37 @@
     margin-left: 20px;
   }
   
+/* Search bar */
+.search-bar {
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.search-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
