@@ -11,6 +11,7 @@ const TopAssetsList = () => {
     const fetchAssets = async () => {
       try {
         const response = await axios.get('https://api.coincap.io/v2/assets');
+        
         const top100Assets = response.data.data.slice(0, 50);
         setAssets(top100Assets);
       } catch (error) {
@@ -39,10 +40,10 @@ const TopAssetsList = () => {
 
   // Function to format volume
   const formatVolume = (value) => {
-    if (value >= 1000000000) {
-      return (value / 1000000000).toFixed(2) + "b";
-    } else if (value >= 1000000) {
-      return (value / 1000000).toFixed(2) + "M";
+     if (value >= 1) {
+      return (value / 1).toFixed(2) + "$";
+    } else if (value <= 1) {
+      return (value / 1).toFixed(5) + "$";
     } else if (value >= 1000) {
       return (value / 1000).toFixed(2) + "K";
     }
