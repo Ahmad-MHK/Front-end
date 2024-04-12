@@ -48,7 +48,7 @@
   font-size: 16px;
 }
 
-.search-button {
+.search-button, .Favoratie-button {
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -59,7 +59,7 @@
   transition: background-color 0.3s ease;
 }
 
-.search-button:hover {
+.search-button:hover , .Favoratie-button {
   background-color: #0056b3;
 }
 
@@ -80,4 +80,9 @@
 .favorites li {
   margin-bottom: 5px;
 }
+
+.Favoratie-button {
+  
+}
+
 

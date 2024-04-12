@@ -11,7 +11,7 @@ const TopAssetsList = () => {
     const fetchAssets = async () => {
       try {
         const response = await axios.get('https://api.coincap.io/v2/assets');
-        const top100Assets = response.data.data.slice(0, 100);
+        const top100Assets = response.data.data.slice(0, 50);
         setAssets(top100Assets);
       } catch (error) {
         console.error('Error fetching assets:', error);
@@ -37,9 +37,21 @@ const TopAssetsList = () => {
     }
   };
 
+  // Function to format volume
+  const formatVolume = (value) => {
+    if (value >= 1000000000) {
+      return (value / 1000000000).toFixed(2) + "b";
+    } else if (value >= 1000000) {
+      return (value / 1000000).toFixed(2) + "M";
+    } else if (value >= 1000) {
+      return (value / 1000).toFixed(2) + "K";
+    }
+    return value;
+  };
+
   return (
     <div className="top-assets-container">
-      <h1>Top 100 Crypto Assets</h1>
+      <h1>Top 50 Crypto Assets</h1>
       <div className="search-bar">
         <input
           type="text"
@@ -55,8 +67,8 @@ const TopAssetsList = () => {
           <li key={asset.id} className="asset-item">
             <span className="rank">Rank: {asset.rank}</span>
             <span className="name">Name: {asset.name}</span>
-            <span className="price">Price (USD): {asset.priceUsd}</span>
-            <button onClick={() => toggleFavorite(asset.id)}>
+            <span className="price">Price (USD): {formatVolume(asset.priceUsd)}</span>
+            <button onClick={() => toggleFavorite(asset.id)} className='Favoratie-button'>
               {favorites.includes(asset.id) ? 'Remove from Favorites' : 'Add to Favorites'}
             </button>
           </li>
