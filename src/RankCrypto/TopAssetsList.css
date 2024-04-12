@@ -1,32 +1,34 @@
+/* TopAssetsList component styles */
+
 .top-assets-container {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .asset-list {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .asset-item {
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-    padding: 10px;
-  }
-  
-  .rank {
-    font-weight: bold;
-  }
-  
-  .name {
-    margin-left: 20px;
-  }
-  
-  .price {
-    margin-left: 20px;
-  }
-  
-/* Search bar */
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.asset-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.asset-item {
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.rank {
+  font-weight: bold;
+}
+
+.name {
+  margin-left: 20px;
+}
+
+.price {
+  margin-left: 20px;
+}
+
+/* Search bar styles */
 .search-bar {
   width: 100%;
   max-width: 400px;
@@ -60,3 +62,22 @@
 .search-button:hover {
   background-color: #0056b3;
 }
+
+/* Favorites section styles */
+.favorites {
+  margin-top: 20px;
+}
+
+.favorites h2 {
+  margin-bottom: 10px;
+}
+
+.favorites ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.favorites li {
+  margin-bottom: 5px;
+}
+

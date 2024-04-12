@@ -5,6 +5,7 @@ import './TopAssetsList.css';
 const TopAssetsList = () => {
   const [assets, setAssets] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
     const fetchAssets = async () => {
@@ -27,6 +28,15 @@ const TopAssetsList = () => {
     );
   };
 
+  // Function to toggle favorite status of a coin
+  const toggleFavorite = (assetId) => {
+    if (favorites.includes(assetId)) {
+      setFavorites(favorites.filter(id => id !== assetId));
+    } else {
+      setFavorites([...favorites, assetId]);
+    }
+  };
+
   return (
     <div className="top-assets-container">
       <h1>Top 100 Crypto Assets</h1>
@@ -46,9 +56,20 @@ const TopAssetsList = () => {
             <span className="rank">Rank: {asset.rank}</span>
             <span className="name">Name: {asset.name}</span>
             <span className="price">Price (USD): {asset.priceUsd}</span>
+            <button onClick={() => toggleFavorite(asset.id)}>
+              {favorites.includes(asset.id) ? 'Remove from Favorites' : 'Add to Favorites'}
+            </button>
           </li>
         ))}
       </ul>
+      <div className="favorites">
+        <h2>Favorites</h2>
+        <ul>
+          {assets.filter(asset => favorites.includes(asset.id)).map(favAsset => (
+            <li key={favAsset.id}>{favAsset.name}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
