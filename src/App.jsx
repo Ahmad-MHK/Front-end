@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavBar from './NavBar/NavBar.jsx';
 import Graph from './Graphs/Graph.jsx';
 import FearAndGread from './Graphs/FearAndGread.jsx';
@@ -8,12 +8,17 @@ import ExchangeVolume from './Graphs/ExchangeVolume.jsx';
 import ExchangeVolumeUsd from './Graphs/ExchangeVolumeUsd.jsx';
 import CoinSupply from './Graphs/CoinSupply.jsx';
 import Footer from './Footer/Footer.jsx';
-import TopAssetsList from './RankCrypto/TopAssetsList.jsx'; 
+import TopAssetsList from './RankCrypto/TopAssetsList.jsx';
+import AssetDetails from './RankCrypto/AssetDetails.jsx'; 
+// import SearchBar from './SearchBar/SearchBar.jsx'; 
+import "./App.css";
 
 const App = () => {
   return (
-    <div>
-      <NavBar></NavBar>
+    <Router>
+      <div>
+        <NavBar></NavBar>
+        {/* <SearchBar products={[]} onSearch={() => {}} /> */}
         <div className="row">
           <Graph></Graph>
           <FearAndGread></FearAndGread>
@@ -24,11 +29,14 @@ const App = () => {
           <ExchangeVolumeUsd></ExchangeVolumeUsd>
           <CoinSupply></CoinSupply>
         </div> 
-        <TopAssetsList></TopAssetsList>
-      <Footer></Footer>
-    </div>
+         <Switch>
+          <Route exact path="/" component={TopAssetsList} />
+          <Route path="/assets/:id" component={AssetDetails} />
+        </Switch> 
+        <Footer></Footer>
+      </div>
+     </Router>
   );
 };
+
 export default App;
-
-

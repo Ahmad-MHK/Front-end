@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './TopAssetsList.css'; // Import CSS file for styling
+import { Link } from 'react-router-dom';
+import './TopAssetsList.css';
 
 const TopAssetsList = () => {
   const [assets, setAssets] = useState([]);
@@ -25,9 +26,11 @@ const TopAssetsList = () => {
       <ul className="asset-list">
         {assets.map(asset => (
           <li key={asset.id} className="asset-item">
-            <span className="rank">Rank: {asset.rank}</span>
-            <span className="name">Name: {asset.name}</span>
-            <span className="price">Price (USD): {asset.priceUsd}</span>
+            <Link to={`/assets/${asset.id}`} className="asset-link">
+              <span className="rank">Rank: {asset.rank}</span>
+              <span className="name">Name: {asset.name}</span>
+              <span className="price">Price (USD): {asset.priceUsd}</span>
+            </Link>
           </li>
         ))}
       </ul>
