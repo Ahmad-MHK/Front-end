@@ -21,7 +21,7 @@ const App = () => {
         </div>
         <div className="row">
           <ExchangeVolume></ExchangeVolume>
-          {/* <ExchangeVolumeUsd></ExchangeVolumeUsd> */}
+          <ExchangeVolumeUsd></ExchangeVolumeUsd>
           <CoinSupply></CoinSupply>
         </div> 
         <TopAssetsList></TopAssetsList>

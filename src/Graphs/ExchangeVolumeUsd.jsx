@@ -22,16 +22,20 @@ const formatVolume = (value) => {
   return value;
 };
 
-
 export default function ExchangeVolumeUsd() {
   const [exchangeData, setExchangeData] = useState([]);
+  const [maxVolume, setMaxVolume] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get("https://api.coincap.io/v2/exchanges");
-        // Assuming the API response contains the data field as shown in the example
-        setExchangeData(response.data.data.slice(0, 5)); // Get the first 5 exchanges
+        const data = response.data.data.slice(0, 5); //5 exchanges
+        setExchangeData(data);
+        
+        // Calculate the maximum volume
+        const maxVolume = Math.max(...data.map(exchange => exchange.volumeUsd));
+        setMaxVolume(maxVolume);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -46,7 +50,7 @@ export default function ExchangeVolumeUsd() {
       <AreaChart
         width={490}
         height={400}
-        data={exchangeData} // Use the fetched exchange data here
+        data={exchangeData}
         margin={{
           top: 10,
           right: 30,
@@ -56,8 +60,8 @@ export default function ExchangeVolumeUsd() {
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
-        <YAxis tickFormatter={formatVolume} /> {/* Format Y-axis ticks */}
-        <Tooltip formatter={formatVolume} /> {/* Format tooltip */}
+        <YAxis tickFormatter={formatVolume} domain={[0, maxVolume]} /> 
+        <Tooltip formatter={formatVolume} /> 
         <Area type="monotone" dataKey="volumeUsd" stroke="#8884d8" fill="#8884d8" />
       </AreaChart>
     </div>

@@ -9,7 +9,7 @@ const data = [
   { name: 'B', value: 50, color: '#DCED31' },
   { name: 'Gread', value: 25, color: '#EF2D56' },
 ];
-const cx = 150;
+const cx = 190;
 const cy = 200;
 const iR = 50;
 const oR = 100;
