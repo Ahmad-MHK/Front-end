@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Routes, Route } from 'react-router-dom';
 import NavBar from './NavBar/NavBar.jsx';
 import Graph from './Graphs/Graph.jsx';
 import FearAndGread from './Graphs/FearAndGread.jsx';
@@ -15,7 +15,7 @@ import "./App.css";
 
 const App = () => {
   return (
-    <Router>
+    <Routes>
       <div>
         <NavBar></NavBar>
         {/* <SearchBar products={[]} onSearch={() => {}} /> */}
@@ -29,13 +29,13 @@ const App = () => {
           <ExchangeVolumeUsd></ExchangeVolumeUsd>
           <CoinSupply></CoinSupply>
         </div> 
-         <Switch>
+         <Route>
           <Route exact path="/" component={TopAssetsList} />
           <Route path="/assets/:id" component={AssetDetails} />
-        </Switch> 
+        </Route> 
         <Footer></Footer>
       </div>
-     </Router>
+     </Routes>
   );
 };
 
