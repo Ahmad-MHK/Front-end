@@ -80,9 +80,9 @@ const TopAssetsList = () => {
         <ul className="asset-list">
           {assets.filter(asset => favorites.includes(asset.id)).map(favAsset => (
             <li key={favAsset.id} className="asset-item">
-              <span className="rank">Rank: {favAsset.rank}</span> {/* Add rank */}
+              <span className="rank">Rank: {favAsset.rank}</span> 
               <span className="name">Name: {favAsset.name}</span>
-              <span className="price">Price (USD): {formatVolume(favAsset.priceUsd)}</span> {/* Add price */}
+              <span className="price">Price (USD): {formatVolume(favAsset.priceUsd)}</span> 
               <button onClick={() => toggleFavorite(favAsset.id)} className="Favoratie-button">
                 Remove from Favorites
               </button> {/* Add remove button */}

@@ -96,7 +96,7 @@ export default function CoinMonitoring() {
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
-          <YAxis tickFormatter={formatVolume} domain={[0, maxPrice]} /> {/* Set Y-axis domain */}
+          <YAxis tickFormatter={formatVolume} /> 
           <Tooltip formatter={(value) => formatVolume(value)} />
           <Legend />
           <Bar dataKey="priceUsd" fill="#8884d8" />
