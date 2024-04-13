@@ -85,7 +85,7 @@ const TopAssetsList = () => {
               <span className="price">Price (USD): {formatVolume(favAsset.priceUsd)}</span> 
               <button onClick={() => toggleFavorite(favAsset.id)} className="Favoratie-button">
                 Remove from Favorites
-              </button> {/* Add remove button */}
+              </button> 
             </li>
           ))}
         </ul>
